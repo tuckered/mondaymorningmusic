@@ -48,13 +48,13 @@
 
 
 <form action="/comments" method="post">
-  <input type="hidden" name="dish_id" value="<%= @song['id'] %>">
+  <input type="hidden" name="song_id" value="<%= @song['id'] %>">
   <label for="">content</label>
   <textarea name="content"></textarea>
   <button>Post</button>
 </form>
 
 <% @comments.each do |comment| %>
-  <p>posted by <%= comment.user_id %></p>
+  <p><%= comment.username %> said...
   <%= comment['content'] %></p>
 <% end %>

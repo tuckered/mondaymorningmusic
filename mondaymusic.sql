@@ -27,6 +27,9 @@ CREATE TABLE comments(
 );
 
 
+ALTER TABLE comments ADD COLUMN user_id INTEGER
+
+ALTER TABLE comments ADD COLUMN username VARCHAR(100)
 
 
 

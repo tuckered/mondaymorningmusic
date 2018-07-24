@@ -20,7 +20,7 @@
 
 
 <section class="artwork_container">
-  <% @songs.each do |song| %>
+  <% @song.each do |song| %>
     <a class="song_homepage" href="/songs/<%= song.id %>">
       <img class="img_homepage" src="<%= song.artwork_url%>" alt="">
       <p><%= song.title%></p>

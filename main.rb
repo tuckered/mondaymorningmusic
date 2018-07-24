@@ -35,7 +35,7 @@ end
 
 
 get '/' do
-  @songs = Song.all
+  @song = Song.all
   erb :index
 end
 
@@ -44,7 +44,7 @@ get '/songs/new' do
 end
 
 get '/playlist' do
-  @songs = Song.all
+  @song = Song.all
   erb :playlist
 end
 
@@ -73,7 +73,7 @@ delete '/songs/:id' do
 end
 
 get '/songs/:id/edit' do
-  @songs = Song.find(params[:id])
+  @song = Song.find(params[:id])
   erb :edit
 end
 
@@ -89,6 +89,7 @@ put '/songs/:id' do
   redirect "/songs/#{ params[:id] }"
 end
 
+
 post '/comments' do
   redirect '/login' unless logged_in?
 
@@ -96,6 +97,7 @@ post '/comments' do
   comment.content = params[:content]
   comment.song_id = params[:song_id]
   comment.user_id = current_user.id
+  comment.username = current_user.username
   comment.save
   redirect "/songs/#{ params[:song_id] }"
 end
