@@ -17,12 +17,14 @@
 </header>
 
 
-<% @songs.each do |song| %>
+<% @likes.each do |track| %>
 
   <p>
-    <a href="/songs/<%= song.id %>">
-    <p><%= song.song_url%></p>
-      
+    <a href="/songs/<%= track.song_id %>">
+    <p><%= track.id%>
+    </p>
+    
+   
     </a>
   </p>
 

@@ -32,8 +32,14 @@ ALTER TABLE comments ADD COLUMN user_id INTEGER
 ALTER TABLE comments ADD COLUMN username VARCHAR(100)
 
 
+CREATE TABLE likes (
+  id SERIAL4 PRIMARY KEY,
+  user_id INTEGER,
+  song_id INTEGER,
+  username VARCHAR(100)
+);
 
-
+INSERT INTO likes (user_id, song_id, username) VALUES (1, 5, 'tucker')
 
 
 INSERT INTO songs (title, artist, album, song_url, artwork_url) VALUES ('Breaking English', 'Rafiq Bhatia', 'Breaking English', 'https://rafiqbhatia.bandcamp.com/track/breaking-english', 'https://f4.bcbits.com/img/a3807931633_16.jpg');

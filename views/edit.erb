@@ -4,33 +4,33 @@
     <a href="/">
       <button class="nav_Btn">Home</button>
     </a>
-    <a href="/songs/<%= @songs['id']%>/edit">
+    <a href="/songs/<%= @song['id']%>/edit">
       <button class="nav_Btn">Edit</button>
     </a>
-    <form action="/songs/<%= @songs['id']%>" method="post">
+    <form action="/songs/<%= @song['id']%>" method="post">
       <input type="hidden" name="_method" value="delete">
     <button class="nav_Btn">Delete</button>
     </form>
   </nav>
 </header>
 
-<form action="/songs/<%= @songs['id']%> " method="post">
+<form action="/songs/<%= @song['id']%> " method="post">
   <input type="hidden" name="_method" value="put">
 
   <label for="">Title</label>
-  <input type="text" name="title" value="<%= @songs['title']%>">
+  <input type="text" name="title" value="<%= @song['title']%>">
 
   <label for="">Artist</label>
-  <input type="text" name="artist" value="<%= @songs['artist']%>">
+  <input type="text" name="artist" value="<%= @song['artist']%>">
 
   <label for="">Album</label>
-  <input type="text" name="album" value="<%= @songs['album']%>">
+  <input type="text" name="album" value="<%= @song['album']%>">
 
   <label for="">Song Link</label>
-  <input type="text" name="song_url" value="<%= @songs['song_url']%>">
+  <input type="text" name="song_url" value="<%= @song['song_url']%>">
 
   <label for="">Artwork</label>
-  <input type="text" name="artwork_url" value="<%= @songs['artwork_url']%>">
+  <input type="text" name="artwork_url" value="<%= @song['artwork_url']%>">
 
   <button>Post</button>
 </form>

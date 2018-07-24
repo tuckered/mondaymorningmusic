@@ -4,13 +4,15 @@
     <a href="/">
       <button class="nav_Btn">Home</button>
     </a>
-    <a href="/songs/<%= @song['id']%>/edit">
-      <button class="nav_Btn">Edit</button>
-    </a>
-    <form action="/songs/<%= @song['id']%>" method="post">
-      <input type="hidden" name="_method" value="delete">
-    <button class="nav_Btn">Delete</button>
-    </form>
+    <% if logged_in? %>
+      <a href="/songs/<%= @song['id']%>/edit">
+        <button class="nav_Btn">Edit</button>
+      </a>
+      <form action="/songs/<%= @song['id']%>" method="post">
+        <input type="hidden" name="_method" value="delete">
+      <button class="nav_Btn">Delete</button>
+      </form>
+    <% end %>
   </nav>
 </header>
 
@@ -28,33 +30,28 @@
   </section>
 </div>
 
-
-
 <a href="<% @song['song_url'] %>"><%= @song['song_url'] %>
 </a> 
 
-<footer>
-  <form action="/songs/<%= @song['id']%>" method="post">
-    <input type="hidden" name="_method" value="delete">
-    <button>Delete</button>
-  </form>
-  <a href="/songs/<%= @song['id']%>/edit">
-    <button>Edit</button>
-  </a>
-  <a href="/">
-    <button>Home</button>
-  </a>
-</footer>
 
+<p> <%= @song.likes.count%> Likes </p>
 
-<form action="/comments" method="post">
-  <input type="hidden" name="song_id" value="<%= @song['id'] %>">
-  <label for="">content</label>
-  <textarea name="content"></textarea>
-  <button>Post</button>
+<form action="/likes" method="post">
+  <input type="hidden" name="song_id" value="<%= @song.id %>">
+  <button class="">Like</button>
 </form>
 
-<% @comments.each do |comment| %>
-  <p><%= comment.username %> said...
-  <%= comment['content'] %></p>
+<% if logged_in? %>
+  <form action="/comments" method="post">
+    <input type="hidden" name="song_id" value="<%= @song['id'] %>">
+    <label for="">Comment</label>
+    <textarea name="content"></textarea>
+    <button>Post</button>
+  </form>
+
+  <% @comments.each do |comment| %>
+    <p><%= comment.username %> said...
+    <%= comment['content'] %></p>
+  <% end %>
+
 <% end %>

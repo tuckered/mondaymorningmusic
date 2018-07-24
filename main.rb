@@ -12,8 +12,9 @@ end
 
 require_relative 'db_config'
 require_relative 'models/song'
-require_relative 'models/user'
 require_relative 'models/comment'
+require_relative 'models/user'
+require_relative 'models/like'
 
 enable :sessions
 
@@ -44,9 +45,17 @@ get '/songs/new' do
 end
 
 get '/playlist' do
-  @song = Song.all
+  @likes = Like.all
+  # @playlist = Song.all
   erb :playlist
 end
+
+# working song playlist
+# get '/playlist' do
+#   @song = Song.all
+#   erb :playlist
+# end
+
 
 get '/songs/:id' do
   @song = Song.find(params[:id])
@@ -139,3 +148,12 @@ delete '/session' do
 end
 
 
+post '/likes' do
+  redirect '/login' unless logged_in?
+  like = Like.new
+  like.song_id = params[:song_id]
+  like.user_id = current_user.id
+  like.username = current_user.username
+  like.save
+  redirect "/songs/#{params[:song_id]}"
+end
