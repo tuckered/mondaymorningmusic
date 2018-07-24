@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Morning Monday</title>
+  <link rel='stylesheet' href='/stylesheets/main.css'>
+  <%# <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> %>
+  <link href="https://fonts.googleapis.com/css?family=Londrina+Outline" rel="stylesheet">
+</head>
+<body>
+
+  <% if logged_in? %>
+    logged in as <%= current_user.username %>
+    <form action="/session" method="post">
+    <input type="hidden" name="_method"         value="delete"> 
+      <button>Logout</button>
+    </form>
+  <% end %>
+
+  <%= yield %>
+
+</body>
+</html>

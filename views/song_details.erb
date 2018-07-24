@@ -1,0 +1,60 @@
+<header>
+  <h1>Morning, Monday</h1>
+  <nav>
+    <a href="/">
+      <button class="nav_Btn">Home</button>
+    </a>
+    <a href="/songs/<%= @song['id']%>/edit">
+      <button class="nav_Btn">Edit</button>
+    </a>
+    <form action="/songs/<%= @song['id']%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+    <button class="nav_Btn">Delete</button>
+    </form>
+  </nav>
+</header>
+
+<div class="details_body">
+
+
+  <h2> <%= @song['title'] %></h2>
+  <img class="img_detail" src="<%= @song['artwork_url']%>" alt="">
+
+  <section class="song_details">
+    <ul>
+      <li> <%= @song['artist'] %> </li> 
+      <li> <%= @song['album'] %> </li>
+    </ul>
+  </section>
+</div>
+
+
+
+<a href="<% @song['song_url'] %>"><%= @song['song_url'] %>
+</a> 
+
+<footer>
+  <form action="/songs/<%= @song['id']%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button>Delete</button>
+  </form>
+  <a href="/songs/<%= @song['id']%>/edit">
+    <button>Edit</button>
+  </a>
+  <a href="/">
+    <button>Home</button>
+  </a>
+</footer>
+
+
+<form action="/comments" method="post">
+  <input type="hidden" name="dish_id" value="<%= @song['id'] %>">
+  <label for="">content</label>
+  <textarea name="content"></textarea>
+  <button>Post</button>
+</form>
+
+<% @comments.each do |comment| %>
+  <p>posted by <%= comment.user_id %></p>
+  <%= comment['content'] %></p>
+<% end %>

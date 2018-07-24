@@ -1,0 +1,40 @@
+<header>
+  <h1>Edit Song</h1>
+  <nav>
+    <a href="/">
+      <button class="nav_Btn">Home</button>
+    </a>
+    <a href="/songs/<%= @songs['id']%>/edit">
+      <button class="nav_Btn">Edit</button>
+    </a>
+    <form action="/songs/<%= @songs['id']%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+    <button class="nav_Btn">Delete</button>
+    </form>
+  </nav>
+</header>
+
+<form action="/songs/<%= @songs['id']%> " method="post">
+  <input type="hidden" name="_method" value="put">
+
+  <label for="">Title</label>
+  <input type="text" name="title" value="<%= @songs['title']%>">
+
+  <label for="">Artist</label>
+  <input type="text" name="artist" value="<%= @songs['artist']%>">
+
+  <label for="">Album</label>
+  <input type="text" name="album" value="<%= @songs['album']%>">
+
+  <label for="">Song Link</label>
+  <input type="text" name="song_url" value="<%= @songs['song_url']%>">
+
+  <label for="">Artwork</label>
+  <input type="text" name="artwork_url" value="<%= @songs['artwork_url']%>">
+
+  <button>Post</button>
+</form>
+
+<a href="/">
+  <button>Home</button>
+</a>
