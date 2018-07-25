@@ -32,6 +32,15 @@ helpers do
       return false
     end
   end  
+
+  def has_liked?(song_id)
+    Like.where(user_id: current_user.id, song_id: song_id).any?
+  end
+
+  # def username_already_registered(username)
+  #   User.where(username: params[:username]).any?
+
+  # end
 end
 
 
@@ -46,9 +55,6 @@ end
 
 get '/playlist' do
   @user = current_user
-
-  # @song = Song.all
-  # @playlist = Song.all
   erb :playlist
 end
 
@@ -119,11 +125,18 @@ get '/register' do
 end
 
 post '/register' do
-  user = User.new
-  user.username = (params[:username])
-  user.password = (params[:password])
-  user.save
-  redirect "/"
+  @user = User.new
+  @user.password = (params[:password])
+  @user.username = (params[:username])
+
+  if @user.save
+    session[:user_id] = @user.id
+    redirect '/'
+  else 
+    erb :register
+    # redirect '/register'
+  end
+
 end
 
 
@@ -133,9 +146,10 @@ end
 
 
 post '/session' do
-  user = User.find_by(username: params[:username])
-  if user && user.authenticate(params[:password])
-    session[:user_id] = user.id
+ 
+  @user = User.find_by(username: params[:username])
+  if @user && @user.authenticate(params[:password])
+    session[:user_id] = @user.id
     redirect '/'
   else
     erb :login
@@ -144,7 +158,7 @@ end
 
 delete '/session' do
   session[:user_id] = nil
-  redirect '/login'
+  redirect '/'
 end
 
 

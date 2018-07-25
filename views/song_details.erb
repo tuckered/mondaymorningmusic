@@ -36,10 +36,14 @@
 
 <p> <%= @song.likes.count%> Likes </p>
 
-<form action="/likes" method="post">
-  <input type="hidden" name="song_id" value="<%= @song.id %>">
-  <button class="">Like</button>
-</form>
+<% if has_liked?(@song.id) == false %>
+  <form action="/likes" method="post">
+    <input type="hidden" name="song_id" value="<%= @song.id %>">
+    <button class="like_Btn">Like</button>
+  </form>
+  <% else %>
+    <button class="like_Btn">Like</button>
+<% end %>
 
 <% if logged_in? %>
   <form action="/comments" method="post">

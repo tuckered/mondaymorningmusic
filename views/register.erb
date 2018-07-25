@@ -8,20 +8,29 @@
 </header>
 
 
+
+<% if @user && !@user.valid? %>
+  <p>Username is already taken. Please try another.</p>
+<% end %>
+
 <div class="register_container">
 
-  <form class="register" action="/session" method="post">
+  <form class="register" action="/register" method="post">
 
     <label for="">Username</label>
-<br>
+  <br>
     <input type="text" name="username">
-<br>
+  <br>
     <label for="">Password</label>
-    <br>
+  <br>
     <input type="password" name="password">
-<br>
+  <br>
     <button>Register</button>
   </form>
+
+
+
+
 
 </div>
 

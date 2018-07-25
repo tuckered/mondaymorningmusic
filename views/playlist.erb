@@ -1,18 +1,20 @@
 <header>
   <h1>My Monday Music</h1>
   <nav>
-    <a href="/songs/new">
-      <button class="nav_Btn">Add</button>
-    </a>
-    <a href="/playlist">
-      <button class="nav_Btn">Playlist</button>
-    </a>
+  <a href="/">
+    <button class="nav_Btn">Home</button>
+  </a>
+  <a href="/songs/new">
+    <button class="nav_Btn">Add</button>
+  </a>
+  <% if !logged_in? %>
     <a href="/login">
       <button class="nav_Btn">Login</button>
     </a>
     <a href="/register">
       <button class="nav_Btn">Register</button>
     </a>
+  <% end %>
   </nav>
 </header>
 
