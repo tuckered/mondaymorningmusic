@@ -30,8 +30,12 @@
   </section>
 </div>
 
-<a href="<% @song['song_url'] %>"><%= @song['song_url'] %>
-</a> 
+
+
+
+
+
+<iframe width="560" height="315" src="<%= @song['song_url'].sub('watch?v=', 'embed/') %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 <p> <%= @song.likes.count%> Likes </p>
@@ -59,3 +63,5 @@
   <% end %>
 
 <% end %>
+
+

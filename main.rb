@@ -1,6 +1,7 @@
 require 'sinatra/reloader'     
 require 'sinatra'
 require 'pg'    
+require 'httparty'
 
 
 def run_sql(sql)
@@ -37,10 +38,6 @@ helpers do
     Like.where(user_id: current_user.id, song_id: song_id).any?
   end
 
-  # def username_already_registered(username)
-  #   User.where(username: params[:username]).any?
-
-  # end
 end
 
 
@@ -72,14 +69,15 @@ get '/songs/:id' do
 end
 
 post '/songs' do
-  song = Song.new
-  song.title = params[:title]
-  song.artist = params[:artist]
-  song.album = params[:album]
-  song.song_url = params[:song_url]
-  song.artwork_url = params[:artwork_url]
-  song.user_id = current_user.id
-  song.save
+  @song = Song.new
+  @song.title = params[:title]
+  @song.artist = params[:artist]
+  @song.album = params[:album]
+  @song.song_url = params[:song_url]
+  
+  @song.artwork_url = params[:artwork_url]
+  @song.user_id = current_user.id
+  @song.save
   redirect '/'
 end
 
@@ -96,13 +94,14 @@ end
 
 
 put '/songs/:id' do
-  song = Song.find(params[:id])
-  song.title = params[:title]
-  song.artist = params[:artist]
-  song.album = params[:album]
-  song.song_url = params[:song_url]
-  song.artwork_url = params[:artwork_url]
-  song.save
+  @song = Song.find(params[:id])
+  @song.title = params[:title]
+  @song.artist = params[:artist]
+  @song.album = params[:album]
+  @song.song_url = params[:song_url]
+  
+  @song.artwork_url = params[:artwork_url]
+  @song.save
   redirect "/songs/#{ params[:id] }"
 end
 
