@@ -45,7 +45,9 @@ get '/songs/new' do
 end
 
 get '/playlist' do
-  @likes = Like.all
+  @user = current_user
+
+  # @song = Song.all
   # @playlist = Song.all
   erb :playlist
 end
@@ -110,8 +112,6 @@ post '/comments' do
   comment.save
   redirect "/songs/#{ params[:song_id] }"
 end
-
-
 
 
 get '/register' do

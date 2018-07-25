@@ -17,15 +17,16 @@
 </header>
 
 
-<% @likes.each do |track| %>
+
+
+<% @user.songs.each do |track| %>
 
   <p>
-    <a href="/songs/<%= track.song_id %>">
-    <p><%= track.id%>
-    </p>
     
-   
-    </a>
+    <p><%= track.title %> </p>
+    <p><%= track.artist %> </p>
+    <p><img class="playlist_img" src="<%= track.artwork_url %>" alt=""> </p>
+
   </p>
 
 <% end %>

@@ -168,3 +168,9 @@ input {
 .song_details {
   border: 2px solid black;
 }
+
+
+.playlist_img {
+  height: 100px;
+  width: 100px;
+}
