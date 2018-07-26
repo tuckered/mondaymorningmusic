@@ -1,4 +1,4 @@
-require 'sinatra/reloader'     
+# require 'sinatra/reloader'     
 require 'sinatra'
 require 'pg'    
 require 'httparty'
@@ -167,6 +167,9 @@ end
 
 post '/likes' do
   redirect '/login' unless logged_in?
+
+  # current_activity = Activity.find(params[:activity_id])
+  like_count = current_user.likes.where(user_id: current_user.id).length
   like = Like.new
   like.song_id = params[:song_id]
   like.user_id = current_user.id
@@ -175,9 +178,9 @@ post '/likes' do
   redirect "/songs/#{params[:song_id]}"
 end
 
-# delete '/likes' do
-#   like = Like.find(params[:id])
-#   like.destroy
-#   redirect "/songs/#{params[:song_id]}"
-# end
+
+delete '/likes' do
+  like.destroy
+  redirect "/songs/#{params[:song_id]}"
+end
 

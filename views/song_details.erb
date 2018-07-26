@@ -43,12 +43,16 @@
 <span class="like_span">
   <p class="likes"> <%= @song.likes.count%> Likes 
     <% if has_liked?(@song.id) == false %>
-      <form class="comment_form" action="/likes" method="post">
-        <input type="hidden" name="song_id" value="<%= @song.id %>">
+        <form action="/likes" method="post"> 
+        <input type="hidden" name="user_id" value="<%= @song.id %>"> 
         <button class="like_Btn">Like</button>
-      </form>
+        </form>
       <% else %>
-        <button class="like_Btn">Like</button>
+      <form class="comment_form" action="/likes" method="post">
+        <input type="hidden" name="_method" value="delete"> 
+        <input type="hidden" name="like_id" value="<%= Like.where(user_id: current_user.id).where(song_id: @song.id).first.id %>">
+        <button class="like_Btn">UnLike</button>
+      </form>
     <% end %>
   </p>
 </span>
@@ -69,3 +73,4 @@
 <% end %>
 
 
+<%# l1 = Like.where(user_id: 1).where(song_id: 20) %>
