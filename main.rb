@@ -55,18 +55,15 @@ get '/playlist' do
   erb :playlist
 end
 
-# working song playlist
-# get '/playlist' do
-#   @song = Song.all
-#   erb :playlist
-# end
-
-
 get '/songs/:id' do
   @song = Song.find(params[:id])
   @comments = @song.comments
   erb :song_details
 end
+
+
+
+
 
 post '/songs' do
   @song = Song.new
@@ -170,3 +167,10 @@ post '/likes' do
   like.save
   redirect "/songs/#{params[:song_id]}"
 end
+
+# delete '/likes' do
+#   like = Like.find(params[:id])
+#   like.destroy
+#   redirect "/songs/#{params[:song_id]}"
+# end
+

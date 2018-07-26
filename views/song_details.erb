@@ -5,6 +5,9 @@
       <button class="nav_Btn">Home</button>
     </a>
     <% if logged_in? %>
+      <a href="/playlist">
+        <button class="nav_Btn">Playlist</button>
+      </a>
       <a href="/songs/<%= @song['id']%>/edit">
         <button class="nav_Btn">Edit</button>
       </a>
@@ -19,29 +22,21 @@
 <div class="details_body">
 
 
-  <h2> <%= @song['title'] %></h2>
+  <h2> <%= @song['artist'] %></h2>
   <img class="img_detail" src="<%= @song['artwork_url']%>" alt="">
-
+  <iframe width="560" height="315" src="<%= @song['song_url'].sub('watch?v=', 'embed/') %>?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   <section class="song_details">
-    <ul>
-      <li> <%= @song['artist'] %> </li> 
-      <li> <%= @song['album'] %> </li>
-    </ul>
+    
+      <%= @song['title'] %> from the album
+      <%= @song['album'] %> 
+   
   </section>
 </div>
 
-
-
-
-
-
-<iframe width="560" height="315" src="<%= @song['song_url'].sub('watch?v=', 'embed/') %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-
-<p> <%= @song.likes.count%> Likes </p>
+<p class="likes"> <%= @song.likes.count%> Likes </p>
 
 <% if has_liked?(@song.id) == false %>
-  <form action="/likes" method="post">
+  <form class="comment_form" action="/likes" method="post">
     <input type="hidden" name="song_id" value="<%= @song.id %>">
     <button class="like_Btn">Like</button>
   </form>
@@ -50,11 +45,11 @@
 <% end %>
 
 <% if logged_in? %>
-  <form action="/comments" method="post">
+  <form class="comment_form" action="/comments" method="post">
     <input type="hidden" name="song_id" value="<%= @song['id'] %>">
-    <label for="">Comment</label>
-    <textarea name="content"></textarea>
-    <button>Post</button>
+    <label>Say something about the track?</label> <br>
+    <textarea class="comment_box" name="content"></textarea> <br>
+    <button class="post_Btn">Post</button>
   </form>
 
   <% @comments.each do |comment| %>

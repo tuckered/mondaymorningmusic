@@ -1,8 +1,9 @@
 body {
   /* display: flex; */
-  background: grey;
+  /* background: grey; */
   /* font-family: 'Londrina Outline', sans-serif; */
-  color: white;
+  font-family: 'Trirong', serif;
+  color: black;
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
@@ -12,16 +13,17 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  height: 25vh;
+  height: 20vh;
   background-color: #B4EDF7;
   margin: 0;
   border-bottom: 5px solid black;
-  /* border-top: 5px solid black; */
+  border-top: 5px solid black;
 }
 
 .logged_in_container {
-  text-align: right;
-  margin-right: 30px;
+  text-align: left;
+  margin-left: 30px;
+  font-size: 1em;
 }
 
 h1 {
@@ -36,16 +38,18 @@ h1 {
   font-size: 4em;
 }
 
+h2 {
+  font-family: 'Londrina Outline', sans-serif;
+  color: black;
+  font-size: 2.5em;
+}
+
 nav {
   display: flex; 
   justify-content: right; 
   padding-right: 20px;
 }
 
-h2 {
-  padding-right: 70px;
-  font-size: 2.5em;
-}
 
 .artwork_container {
   display: flex;
@@ -57,8 +61,8 @@ h2 {
 
 .img_homepage {
   display: flex;
-  width: 300px;
-  height: 300px;
+  width: 40vw;
+  height: 20vh;
   /* padding: 20px; */
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 0 0 0 0;
@@ -147,9 +151,20 @@ a:hover {
 .add_song_form {
   border: 2px solid black;
   width: auto;
-  font-size: 5em;
- 
+  font-size: 2em;
   text-align: center;
+}
+
+.add_song_box {
+  width: 70%;
+  height:4vh;
+  font-size: 0.8em;
+  border-radius: 25px;
+  transition: 0.5s;
+}
+
+.add_song_box:hover {
+  /* border-color: purple; */
 }
 
 input {
@@ -167,11 +182,74 @@ input {
 }
 
 .song_details {
-  border: 2px solid black;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #B4EDF7;
+  margin: 0;
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
 }
 
+iframe {
+  box-shadow: 0 0 20px 20px black;
+  /* margin: 0 0 0 0; */
+  /* border: 5px solid black; */
+  height: 50vh;
+  width: 100vw;
+}
 
 .playlist_img {
   height: 100px;
   width: 100px;
+}
+
+.details_body {
+  margin-top: 0px;
+  font-family: 'Trirong', serif;
+  font-size: 30px;
+  color: black;
+}
+
+.comment_form {
+  font-size: 2em;
+}
+
+.comment_box {
+  width: 50%;
+  height: 5vh;
+  font-size: 1em;
+}
+
+label {
+  font-size: 0.7em;
+}
+
+.like_Btn {
+  font-size: 0.7em;
+  border-radius: 10px;
+  background-color: white;
+  transition: 0.4s;
+  padding-top: 0px;
+}
+
+.like_Btn:hover {
+  background-color: #B4EDF7;
+  
+}
+
+.post_Btn {
+  font-size: 0.7em;
+  border-radius: 10px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+.post_Btn:hover {
+  background-color: #B4EDF7;
+}
+
+.likes {
+  font-size: 1.5em;
+  padding-bottom: 2px;
+
 }

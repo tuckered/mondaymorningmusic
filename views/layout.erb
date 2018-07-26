@@ -6,17 +6,32 @@
   <link rel='stylesheet' href='/stylesheets/main.css'>
   <%# <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> %>
   <link href="https://fonts.googleapis.com/css?family=Londrina+Outline" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Trirong" rel="stylesheet">
 </head>
 <body>
 
   <div class="logged_in_container">
     <% if logged_in? %>
-      logged in as <%= current_user.username %>
+      Hello there <%= current_user.username %>
       <form action="/session" method="post">
       <input type="hidden" name="_method"         value="delete"><button>Logout</button>
       </form>
     <% end %>
   </div>
+
+  <header>
+  <h1>Monday Morning Music</h1>
+  <nav>
+    <% if logged_in? %>
+      <a href="/songs/new">Add</a>
+      <a href="/playlist">Playlist</a>
+    <% end %>
+    <% if !logged_in? %>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    <% end %>
+  </nav>
+</header>
   
   <%= yield %>
 
