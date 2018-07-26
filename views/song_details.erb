@@ -1,22 +1,29 @@
-<header>
-  <h1>Morning, Monday</h1>
-  <nav>
-    <a href="/">
-      <button class="nav_Btn">Home</button>
-    </a>
+<div class="logged_in_container">
+  <span class="logged_in">
     <% if logged_in? %>
-      <a href="/playlist">
-        <button class="nav_Btn">Playlist</button>
-      </a>
-      <a href="/songs/<%= @song['id']%>/edit">
-        <button class="nav_Btn">Edit</button>
-      </a>
-      <form action="/songs/<%= @song['id']%>" method="post">
-        <input type="hidden" name="_method" value="delete">
-      <button class="nav_Btn">Delete</button>
+      Hello there <%= current_user.username %>
+      <form action="/session" method="post">
+      <input type="hidden" name="_method"         value="delete">
+        <button class="logout_Btn">Logout</button>
       </form>
     <% end %>
+  </span>
+  <nav class="header_links">
+    <a href="/">Home</a>
+    <% if logged_in? %>
+      <a href="/songs/<%= @song['id']%>/edit">Edit</a>
+      <a href="/songs/new">Add</a>
+      <a href="/playlist">Playlist</a>
+    <% end %>
+    <% if !logged_in? %>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    <% end %>
   </nav>
+</div>
+
+<header>
+    <h1>Monday Morning Music</h1>
 </header>
 
 <div class="details_body">
@@ -33,16 +40,18 @@
   </section>
 </div>
 
-<p class="likes"> <%= @song.likes.count%> Likes </p>
-
-<% if has_liked?(@song.id) == false %>
-  <form class="comment_form" action="/likes" method="post">
-    <input type="hidden" name="song_id" value="<%= @song.id %>">
-    <button class="like_Btn">Like</button>
-  </form>
-  <% else %>
-    <button class="like_Btn">Like</button>
-<% end %>
+<span class="like_span">
+  <p class="likes"> <%= @song.likes.count%> Likes 
+    <% if has_liked?(@song.id) == false %>
+      <form class="comment_form" action="/likes" method="post">
+        <input type="hidden" name="song_id" value="<%= @song.id %>">
+        <button class="like_Btn">Like</button>
+      </form>
+      <% else %>
+        <button class="like_Btn">Like</button>
+    <% end %>
+  </p>
+</span>
 
 <% if logged_in? %>
   <form class="comment_form" action="/comments" method="post">
@@ -53,8 +62,8 @@
   </form>
 
   <% @comments.each do |comment| %>
-    <p><%= comment.username %> said...
-    <%= comment['content'] %></p>
+    <p class="comment_user"><%= comment.username %> said...</p>
+    <p class="comment_text"> <%= comment['content'] %></p>
   <% end %>
 
 <% end %>

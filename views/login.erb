@@ -1,13 +1,24 @@
-<h1>login</h1>
+<header>
+    <h1>Login</h1>
+</header>
 
-<form action="/session" method="post">
-  <label for="">Username</label>
-  <input type="text" name="username">
-  <label for="">Password</label>
-  <%# password type = hidden instead of text %>
-  <input type="password" name="password">
-  <button>Login</button>
-</form>
+<div class="container">
+  <form class="login_form" action="/session" method="post">
+    <label class="form_words" for="">Username</label>
+    <br>
+    <input class="login_box" type="text" name="username">
+    <br>
+    <label class="form_words" for="">Password</label> 
+    <br>
+    <%# password type = hidden instead of text %>
+    <input class="login_box" type="password" name="password">
+    <br>
+    <button class="post_Btn">Login</button>
+  </form>
+  <p class="not_registered">Not Registered?</p>
+  
+  <a class="click_here" href="/register">Click Here</a>
+</div>
 
-<h3>Not Registered?</h3>
-<a href="/register">Click Here</a>
+
+

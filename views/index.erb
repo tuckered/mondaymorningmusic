@@ -1,6 +1,14 @@
-<header>
-  <h1>Monday Morning Music</h1>
-  <nav>
+<div class="logged_in_container">
+  <span class="logged_in">
+    <% if logged_in? %>
+      Hello there <%= current_user.username %>
+      <form action="/session" method="post">
+      <input type="hidden" name="_method"         value="delete">
+        <button class="logout_Btn">Logout</button>
+      </form>
+    <% end %>
+  </span>
+  <nav class="header_links">
     <% if logged_in? %>
       <a href="/songs/new">Add</a>
       <a href="/playlist">Playlist</a>
@@ -10,8 +18,12 @@
       <a href="/register">Register</a>
     <% end %>
   </nav>
-</header>
 
+</div>
+
+<header>
+    <h1>Monday Morning Music</h1>
+</header>
 
 <section class="artwork_container">
   <% @song.each do |song| %>

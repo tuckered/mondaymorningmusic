@@ -2,7 +2,7 @@ body {
   /* display: flex; */
   /* background: grey; */
   /* font-family: 'Londrina Outline', sans-serif; */
-  font-family: 'Trirong', serif;
+  font-family: 'Text Me One', sans-serif;
   color: black;
   margin-top: 0;
   margin-left: 0;
@@ -13,41 +13,69 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  height: 20vh;
+  align-items: center;
+  height: 15vh;
   background-color: #B4EDF7;
   margin: 0;
   border-bottom: 5px solid black;
   border-top: 5px solid black;
 }
 
-.logged_in_container {
-  text-align: left;
-  margin-left: 30px;
-  font-size: 1em;
-}
-
 h1 {
   display: flex;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Text Me One', sans-serif;
+  /* font-family: 'Neucha', cursive; */
+  /* font-family: 'Londrina Outline', sans-serif; */
+  /* font-family: 'Open Sans', sans-serif; */
   color: black;
-  font-size: 3em;
-  padding-left: 30px;
-  padding-top: 30px;
-  font-family: 'Londrina Outline', sans-serif;
-  /* border: 1px solid black; */
   font-size: 4em;
+  padding-left: 30px;
 }
+
+.logged_in_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1em;
+  /* border: 2px solid red; */
+  padding-left: 1.5em;;
+  padding-right: 1.5em;
+  height: 10vh;
+  font-size: 1.5em;
+}
+
+.header_links a {
+  margin-right: 1.5em;
+
+}
+
+.logged_in {
+  display: flex;
+  flex-direction: column;
+}
+
+.logout_Btn {
+  font-size: 0.7em;
+  border-radius: 10px;
+  border: none;
+  background-color: white;
+  transition: 0.4s;
+}
+
+.logout_Btn:hover {
+  background-color: #B4EDF7;
+}
+
 
 h2 {
-  font-family: 'Londrina Outline', sans-serif;
-  color: black;
-  font-size: 2.5em;
-}
-
-nav {
-  display: flex; 
-  justify-content: right; 
-  padding-right: 20px;
+  /* font-family: 'Londrina Outline', sans-serif; */
+  font-family: 'Text Me One', sans-serif;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #B4EDF7;
+  margin-top: 1em;
+  border-bottom: 5px solid black;
+  border-top: 5px solid black;
 }
 
 
@@ -56,6 +84,8 @@ nav {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  /* font-weight: bold; */
+  font-family: 'Roboto', sans-serif;
   /* border: 2px solid black; */
 }
 
@@ -81,7 +111,7 @@ a {
   color: black;
   transition: 0.3s;
   padding: 0;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 a:hover {
@@ -89,61 +119,11 @@ a:hover {
   font-weight: 500;
 }
 
-.nav_Btn {
-  display: flex; 
-  justify-content: right; 
-  padding-right: 30px; 
-  text-align: center; 
-  margin-top: 15px;
-  -moz-box-shadow:inset -2px 14px 2px -18px #ffffff;
-	-webkit-box-shadow:inset -2px 14px 2px -18px #ffffff;
-	box-shadow:inset -2px 14px 2px -18px #ffffff;
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
-	background:-moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:-webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:-o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:-ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
-	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
-	background-color:#ffffff;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	cursor:pointer;
-	color:#666666;
-	font-family:Arial;
-	font-size:20px;
-	font-weight:bold;
-	/* padding:8px 24px; */
-	text-decoration:none;
-	text-shadow:0px 0px 9px #ffffff;
-}
-
-.nav_Btn:hover {
-	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
-	background:-moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:-webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:-o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:-ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
-	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
-	background-color:#f6f6f6;
-}
-
-.myButton:active {
-	position:relative;
-	top:1px;
-}
-
 .container {
-  border: 3px solid red;
+  /* border: 3px solid red; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  /* width: 50%; */
   height: 100vh;
 }
 
@@ -182,6 +162,7 @@ input {
 }
 
 .song_details {
+  font-family: 'Text Me One', sans-serif;
   display: flex;
   justify-content: space-evenly;
   background-color: #B4EDF7;
@@ -191,11 +172,11 @@ input {
 }
 
 iframe {
-  box-shadow: 0 0 20px 20px black;
+  /* box-shadow: 0 0 2px 3px #B4EDF7; */
   /* margin: 0 0 0 0; */
   /* border: 5px solid black; */
   height: 50vh;
-  width: 100vw;
+  width: 90vw;
 }
 
 .playlist_img {
@@ -218,18 +199,50 @@ iframe {
   width: 50%;
   height: 5vh;
   font-size: 1em;
+  /* border-radius: 10px; */
+  border: 1px solid black;
+  transition: 0.2s
+}
+
+.comment_box:focus {
+  outline: none;
+  border-color: #B4EDF7;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+.comment_user {
+  font-size: 1.5em;
+  text-decoration: underline;
+}
+
+.comment_text {
+  font-size: 1.2em;
 }
 
 label {
   font-size: 0.7em;
 }
 
+.like_span {
+  display: flex;
+  justify-content: center;
+  /* width: 50%; */
+}
+
+.likes {
+  margin-top: 6px;
+  margin-right: 1em;
+  font-size: 1.5em;
+  padding-bottom: 2px;
+  padding-top: 5px;
+  width: 50%;
+}
+
 .like_Btn {
-  font-size: 0.7em;
+  font-size: 0.8em;
   border-radius: 10px;
   background-color: white;
   transition: 0.4s;
-  padding-top: 0px;
 }
 
 .like_Btn:hover {
@@ -238,7 +251,7 @@ label {
 }
 
 .post_Btn {
-  font-size: 0.7em;
+  font-size: 0.6em;
   border-radius: 10px;
   background-color: white;
   transition: 0.4s;
@@ -248,8 +261,36 @@ label {
   background-color: #B4EDF7;
 }
 
-.likes {
-  font-size: 1.5em;
-  padding-bottom: 2px;
 
+.login_form {
+  padding-top: 1em;
+  width: auto;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+.login_box {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 70%;
+  height:4vh;
+  font-size: 0.8em;
+  border-radius: 25px;
+  transition: 0.5s;
+}
+
+.form_words {
+  font-size: 1.2em;
+  margin-top: 3em;
+  margin-bottom: 1em;
+}
+
+.click_here {
+  font-size: 1.8em;
+}
+
+.not_registered {
+  font-size: 2em;
 }

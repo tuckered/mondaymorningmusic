@@ -7,32 +7,14 @@
   <%# <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> %>
   <link href="https://fonts.googleapis.com/css?family=Londrina+Outline" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Trirong" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Text+Me+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Neucha|Poiret+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
+
 </head>
 <body>
 
-  <div class="logged_in_container">
-    <% if logged_in? %>
-      Hello there <%= current_user.username %>
-      <form action="/session" method="post">
-      <input type="hidden" name="_method"         value="delete"><button>Logout</button>
-      </form>
-    <% end %>
-  </div>
-
-  <header>
-  <h1>Monday Morning Music</h1>
-  <nav>
-    <% if logged_in? %>
-      <a href="/songs/new">Add</a>
-      <a href="/playlist">Playlist</a>
-    <% end %>
-    <% if !logged_in? %>
-      <a href="/login">Login</a>
-      <a href="/register">Register</a>
-    <% end %>
-  </nav>
-</header>
-  
   <%= yield %>
 
 </body>
