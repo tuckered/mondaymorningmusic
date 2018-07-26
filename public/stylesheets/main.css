@@ -142,22 +142,45 @@ a:hover {
 
 
 .add_song_form {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   width: auto;
   font-size: 2em;
   text-align: center;
+  padding-top: 1.5em;
 }
 
 .add_song_box {
-  width: 70%;
+  width: 50vw;;
   height:4vh;
-  font-size: 0.8em;
-  border-radius: 25px;
+  font-size: 0.6em;
+  border-radius: 15px;
   transition: 0.5s;
 }
 
 .add_song_box:hover {
   /* border-color: purple; */
+}
+
+.fineprint {
+  font-size: 0.5em;
+  width: auto;
+  text-align: center;
+  padding-bottom: 2em;
+  /* border: 1px solid black; */
+}
+
+.post_Btn {
+  font-family: 'Text Me One', sans-serif;
+  font-size: 0.8em;
+  border-radius: 5px;
+  background-color: white;
+  transition: 0.2s;
+  border: none;
+  margin-top: 50px;
+}
+
+.post_Btn:hover {
+  border: 2px solid #B4EDF7
 }
 
 input {
@@ -262,16 +285,7 @@ label {
   
 }
 
-.post_Btn {
-  font-size: 0.6em;
-  border-radius: 10px;
-  background-color: white;
-  transition: 0.4s;
-}
 
-.post_Btn:hover {
-  background-color: #B4EDF7;
-}
 
 
 .login_form {
@@ -289,7 +303,7 @@ label {
   width: 70%;
   height:4vh;
   font-size: 0.8em;
-  border-radius: 25px;
+  border-radius: 15px;
   transition: 0.5s;
 }
 
@@ -306,3 +320,8 @@ label {
 .not_registered {
   font-size: 2em;
 }
+
+.register_container {
+
+}
+

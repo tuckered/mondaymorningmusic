@@ -1,4 +1,4 @@
-# require 'sinatra/reloader'     
+require 'sinatra/reloader'     
 require 'sinatra'
 require 'pg'    
 require 'httparty'
@@ -10,11 +10,6 @@ def run_sql(sql)
   conn.close
   return result
 end
-
-def search_artwork
-  @artwork = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=57ee3318536b23ee81d6b27e36997cde&artist=' + params[:artist] + '&track=' + params[:title] + '&format=json')['track']['album']['image'][3]
-end
-
 
 
 
@@ -45,10 +40,20 @@ helpers do
     Like.where(user_id: current_user.id, song_id: song_id).any?
   end
 
-
   def artwork(artist, title)
     @artwork = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=57ee3318536b23ee81d6b27e36997cde&artist=' + artist + '&track=' + title + '&format=json')['track']['album']['image'][3]["#text"]
   end
+
+  def album_title(artist, title)
+    @album_title = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=57ee3318536b23ee81d6b27e36997cde&artist=' + artist + '&track=' + title + '&format=json')['track']['album']['title']["#text"]
+  end
+
+
+  def track_check(artist, title) 
+    @track_check = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=57ee3318536b23ee81d6b27e36997cde&artist=' + artist + '&track=' + title + '&format=json')
+  end
+
+
 end
 
 
@@ -77,12 +82,23 @@ post '/songs' do
   @song = Song.new
   @song.title = params[:title]
   @song.artist = params[:artist]
-  @song.album = params[:album]
   @song.song_url = params[:song_url]
+
+  track_check(params[:artist], params[:title].gsub(' ', '+'))
+  if @track_check['message'] == "Track not found"
+    redirect 'songs/new'
+  end
+  
+  @album_title = album_title(params[:artist], params[:title].gsub(' ', '+'))
   @song.artwork_url = artwork(params[:artist], params[:title].gsub(' ', '+'))
+  
+  # if @song.artwork_url['track']['album']['image'][3]["#text"] == ("")
+  #   @song.artwork_url = '/stylesheets/headphones-placeholder.jpeg'
+  # else
   @song.user_id = current_user.id
   @song.save
   redirect '/'
+    # end
 end
 
 delete '/songs/:id' do
@@ -131,6 +147,7 @@ post '/register' do
   @user = User.new
   @user.password = (params[:password])
   @user.username = (params[:username])
+  @user.email = (params[:email])
 
   if @user.save
     session[:user_id] = @user.id
@@ -180,6 +197,7 @@ end
 
 
 delete '/likes' do
+  like = Like.where(user_id: current_user.id).where(song_id: params[:song_id]).first
   like.destroy
   redirect "/songs/#{params[:song_id]}"
 end

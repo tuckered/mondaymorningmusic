@@ -34,9 +34,9 @@
 <section class="artwork_container">
   <% @song.each do |song| %>
     <a class="song_homepage" href="/songs/<%= song.id %>">
-      <img class="img_homepage" src="<%= song.artwork_url %>" alt="">
-      <p><%= song.title%></p>
-    </a>
+    <img class="img_homepage" src="<%= song.artwork_url %>" alt="">
+    <p><%= song.title%></p>
+    
   <% end %>
 </section>
 

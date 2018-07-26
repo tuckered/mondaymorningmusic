@@ -39,6 +39,10 @@ CREATE TABLE likes (
   username VARCHAR(100)
 );
 
+
+ALTER TABLE users ADD COLUMN email VARCHAR(100);
+
+
 INSERT INTO likes (user_id, song_id, username) VALUES (1, 5, 'tucker')
 
 

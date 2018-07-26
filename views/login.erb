@@ -2,6 +2,10 @@
     <h1>Login</h1>
 </header>
 
+<% if @user && !@user.valid? %>
+  <p>Are you sure that's right? Try again...</p>
+<% end %>
+
 <div class="container">
   <form class="login_form" action="/session" method="post">
     <label class="form_words" for="">Username</label>
