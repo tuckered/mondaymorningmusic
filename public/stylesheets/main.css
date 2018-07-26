@@ -21,6 +21,11 @@ header {
   border-top: 5px solid black;
 }
 
+.songs {
+  font-size: 0.5em;
+  height: 8vh;
+}
+
 h1 {
   display: flex;
   font-family: 'Text Me One', sans-serif;
@@ -31,6 +36,13 @@ h1 {
   font-size: 4em;
   padding-left: 30px;
 }
+
+.about {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  font-size: 1.5em;
+}
+
 
 .logged_in_container {
   display: flex;
@@ -55,6 +67,7 @@ h1 {
 }
 
 .logout_Btn {
+  font-family: 'Text Me One', sans-serif;
   font-size: 0.7em;
   border-radius: 10px;
   border: none;
@@ -92,7 +105,7 @@ h2 {
 .img_homepage {
   display: flex;
   width: 40vw;
-  height: 20vh;
+  /* height: 20vh; */
   /* padding: 20px; */
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 0 0 0 0;
@@ -231,15 +244,14 @@ label {
 
 .likes {
   margin-top: 6px;
-  margin-right: 1em;
   font-size: 1.5em;
   padding-bottom: 2px;
   padding-top: 5px;
-  width: 50%;
+  width: 20%;
 }
 
 .like_Btn {
-  font-size: 0.8em;
+  font-size: 0.6em;
   border-radius: 10px;
   background-color: white;
   transition: 0.4s;

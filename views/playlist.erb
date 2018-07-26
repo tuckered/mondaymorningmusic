@@ -1,45 +1,33 @@
+<div class="logged_in_container">
+  <span class="logged_in">
+    <% if logged_in? %>
+      Hello there <%= current_user.username %>
+      <form action="/session" method="post">
+      <input type="hidden" name="_method"         value="delete">
+        <button class="logout_Btn">Logout</button>
+      </form>
+    <% end %>
+  </span>
+  <nav class="header_links">
+    <a href="/">Home</a>
+    <a href="/songs/new">Add</a>
+    </nav>
+</div>
+
 <header>
   <h1>My Monday Music</h1>
-  <nav>
-  <a href="/">
-    <button class="nav_Btn">Home</button>
-  </a>
-  <a href="/songs/new">
-    <button class="nav_Btn">Add</button>
-  </a>
-  <% if !logged_in? %>
-    <a href="/login">
-      <button class="nav_Btn">Login</button>
-    </a>
-    <a href="/register">
-      <button class="nav_Btn">Register</button>
-    </a>
-  <% end %>
-  </nav>
 </header>
 
 
-<iframe width="560" height="315" src="<%= @song['song_url'].sub('watch?v=', 'embed/') %>?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
-<% @user.songs.each do |track| %>
+<% @user.songs.each do |song| %>
 
   <p>
+    <iframe width="560" height="315" src="<%= song['song_url'].sub('watch?v=', 'embed/') %>?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
  
-
-
-
-    <p><%= track.title %> </p>
-    <p><%= track.artist %> </p>
+   
 
 
   </p>
 
 <% end %>
-
-
-
-
-
-<a href="/">
-  <button>Home</button>
-</a>

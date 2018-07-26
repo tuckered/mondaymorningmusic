@@ -25,11 +25,20 @@
     <h1>Monday Morning Music</h1>
 </header>
 
+<p class="about">Life can be hard, and Mondays can be even harder. Morning Monday is a place to upload, comment and share with others, songs that are special to you, and help you face the week ahead.</p>
+
+<header class="songs">
+    <h1>Songs</h1>
+</header>
+
 <section class="artwork_container">
   <% @song.each do |song| %>
     <a class="song_homepage" href="/songs/<%= song.id %>">
-      <img class="img_homepage" src="<%= song.artwork_url%>" alt="">
+      <img class="img_homepage" src="<%= song.artwork_url %>" alt="">
       <p><%= song.title%></p>
     </a>
   <% end %>
 </section>
+
+
+

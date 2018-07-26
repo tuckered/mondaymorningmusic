@@ -11,6 +11,13 @@ def run_sql(sql)
   return result
 end
 
+def search_artwork
+  @artwork = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=57ee3318536b23ee81d6b27e36997cde&artist=' + params[:artist] + '&track=' + params[:title] + '&format=json')['track']['album']['image'][3]
+end
+
+
+
+
 require_relative 'db_config'
 require_relative 'models/song'
 require_relative 'models/comment'
@@ -38,6 +45,10 @@ helpers do
     Like.where(user_id: current_user.id, song_id: song_id).any?
   end
 
+
+  def artwork(artist, title)
+    @artwork = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=57ee3318536b23ee81d6b27e36997cde&artist=' + artist + '&track=' + title + '&format=json')['track']['album']['image'][3]["#text"]
+  end
 end
 
 
@@ -62,17 +73,13 @@ get '/songs/:id' do
 end
 
 
-
-
-
 post '/songs' do
   @song = Song.new
   @song.title = params[:title]
   @song.artist = params[:artist]
   @song.album = params[:album]
   @song.song_url = params[:song_url]
-  
-  @song.artwork_url = params[:artwork_url]
+  @song.artwork_url = artwork(params[:artist], params[:title].gsub(' ', '+'))
   @song.user_id = current_user.id
   @song.save
   redirect '/'
@@ -97,7 +104,7 @@ put '/songs/:id' do
   @song.album = params[:album]
   @song.song_url = params[:song_url]
   
-  @song.artwork_url = params[:artwork_url]
+  @song.artwork_url = artwork(params[:artist], params[:title])
   @song.save
   redirect "/songs/#{ params[:id] }"
 end
