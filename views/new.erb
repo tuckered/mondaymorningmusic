@@ -37,8 +37,30 @@
     <br>
     <label class="fineprint" for="">(The link from the address bar is fine)</label>
     <br>
-    <button class="post_Btn">Add Song</button>
+    <button class="post_Btn">Share Song</button>
   </form>
 
 </div>
+
+
+
+
+<div class="logged_in_container">
+  <span class="logged_in">
+    <% if logged_in? %>
+      Hello there <%= current_user.username %>
+      <form action="/session" method="post">
+      <input type="hidden" name="_method"         value="delete">
+        <button class="logout_Btn">Logout</button>
+      </form>
+    <% end %>
+  </span>
+  <nav class="header_links">
+    <a href="/">Home</a>
+      <a href="/songs/new">Add</a>
+      <a href="/playlist">Playlist</a>
+  </nav>
+</div>
+
+
 

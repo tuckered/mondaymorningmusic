@@ -68,6 +68,7 @@ end
 
 get '/playlist' do
   @user = current_user
+  @like = Like.all
   erb :playlist
 end
 
@@ -91,7 +92,7 @@ post '/songs' do
   
   @album_title = album_title(params[:artist], params[:title].gsub(' ', '+'))
   @song.artwork_url = artwork(params[:artist], params[:title].gsub(' ', '+'))
-  
+
   # if @song.artwork_url['track']['album']['image'][3]["#text"] == ("")
   #   @song.artwork_url = '/stylesheets/headphones-placeholder.jpeg'
   # else

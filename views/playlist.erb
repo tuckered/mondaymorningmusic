@@ -19,15 +19,18 @@
 </header>
 
 
+<section class="playlist_container">
+  <% if @like.count == 0 %>
+    <p class="no_likes_prompt">
+      You don't have any liked tracks yet. 
+      <br>
+      Go have yourself an auditory treat.
+    </p>
+  <% end %>
+  <% @user.songs.each do |song| %>
+    <iframe class="artwork_playlist" width="560" height="315" src="<%= song['song_url'].sub('watch?v=', 'embed/') %>?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <% end %>
 
-<% @user.songs.each do |song| %>
-
-  <p>
-    <iframe width="560" height="315" src="<%= song['song_url'].sub('watch?v=', 'embed/') %>?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
- 
-   
 
 
-  </p>
-
-<% end %>
+</section>

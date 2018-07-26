@@ -1,0 +1,10 @@
+// $(document).ready(function(){
+// $("#comment_form").submit(function(e) {
+//   e.preventDefault();
+// });
+
+
+// document.querySelector("#id-checkbox").addEventListener("click", function(event) {
+//   document.getElementById("output-box").innerHTML += "Sorry! <code>preventDefault()</code> won't let you check this!<br>";
+//   event.preventDefault();
+// }, false);

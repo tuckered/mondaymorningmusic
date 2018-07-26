@@ -1,40 +1,47 @@
-<header>
-  <h1>Edit Song</h1>
-  <nav>
-    <a href="/">
-      <button class="nav_Btn">Home</button>
-    </a>
-    <a href="/songs/<%= @song['id']%>/edit">
-      <button class="nav_Btn">Edit</button>
-    </a>
-    <form action="/songs/<%= @song['id']%>" method="post">
-      <input type="hidden" name="_method" value="delete">
-    <button class="nav_Btn">Delete</button>
-    </form>
+<div class="logged_in_container">
+  <span class="logged_in">
+    <% if logged_in? %>
+      Hello there <%= current_user.username %>
+      <form action="/session" method="post">
+      <input type="hidden" name="_method"         value="delete">
+        <button class="logout_Btn">Logout</button>
+      </form>
+    <% end %>
+  </span>
+  <nav class="header_links">
+    <a href="/">Home</a>
+      <a href="/songs/new">Add</a>
+      <a href="/playlist">Playlist</a>
   </nav>
+</div>
+
+<header>
+    <h1>Edit Song</h1>
 </header>
 
-<form action="/songs/<%= @song['id']%> " method="post">
-  <input type="hidden" name="_method" value="put">
+<div class="container">
 
-  <label for="">Title</label>
-  <input type="text" name="title" value="<%= @song['title']%>">
+  <form class="add_song_form" action="/songs/<%= @song['id']%> " method="post">
+    <input type="hidden" name="_method" value="put">
 
-  <label for="">Artist</label>
-  <input type="text" name="artist" value="<%= @song['artist']%>">
+    <label for="">Title</label>
+    <br>
+    <input class="add_song_box" type="text" name="title" value="<%= @song['title']%>">
+    <br>
+    <label for="">Artist</label>
+    <br>
+    <input class="add_song_box" type="text" name="artist" value="<%= @song['artist']%>">
+    <br>
+    <label for="">Song Link</label>
+    <br>
+    <input class="add_song_box" type="text" name="song_url" value="<%= @song['song_url']%>">
+    <br>
+    <button class="post_Btn">Edit</button>
+  </form>
 
-  <label for="">Album</label>
-  <input type="text" name="album" value="<%= @song['album']%>">
+  <form action="/songs/<%= @song['id']%>" method="post">
+      <input type="hidden" name="_method" value="delete">
+    <button class="post_Btn">Delete</button>
 
-  <label for="">Song Link</label>
-  <input type="text" name="song_url" value="<%= @song['song_url']%>">
 
-  <label for="">Artwork</label>
-  <input type="text" name="artwork_url" value="<%= @song['artwork_url']%>">
-
-  <button>Post</button>
-</form>
-
-<a href="/">
-  <button>Home</button>
-</a>
+</div>

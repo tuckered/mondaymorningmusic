@@ -42,36 +42,39 @@
 
 <span class="like_span">
   <p class="likes"> <%= @song.likes.count%> Likes 
-    <% if has_liked?(@song.id) == false %>
-        <form action="/likes" method="post"> 
-        <input type="hidden" name="song_id" value="<%= @song.id %>"> 
-        <button class="like_Btn">Like</button>
+    <% if logged_in? %>
+      <% if has_liked?(@song.id) == false %>
+          <form class="comment_form" action="/likes" method="post"> 
+          <input type="hidden" name="song_id" value="<%= @song.id %>"> 
+          <button class="like_Btn">Like</button>
+          </form>
+        <% else %>
+        <form class="comment_form" action="/likes" method="post">
+          <input type="hidden" name="song_id" value="<%= @song.id %>"> 
+          <input type="hidden" name="_method" value="delete"> 
+          <input type="hidden" name="like_id" value="<%= Like.where(user_id: current_user.id).where(song_id: @song.id).first.id %>">
+          <button class="like_Btn">Unlike</button>
         </form>
-      <% else %>
-      <form class="comment_form" action="/likes" method="post">
-        <input type="hidden" name="song_id" value="<%= @song.id %>"> 
-        <input type="hidden" name="_method" value="delete"> 
-        <input type="hidden" name="like_id" value="<%= Like.where(user_id: current_user.id).where(song_id: @song.id).first.id %>">
-        <button class="like_Btn">UnLike</button>
-      </form>
+      <% end %>
     <% end %>
   </p>
 </span>
 
 <% if logged_in? %>
-  <form class="comment_form" action="/comments" method="post">
+  <form id="comment_form" class="comment_form" action="/comments" method="post">
     <input type="hidden" name="song_id" value="<%= @song['id'] %>">
     <label>Say something about the track?</label> <br>
     <textarea class="comment_box" name="content"></textarea> <br>
     <button class="post_Btn">Post</button>
   </form>
+<% end %>
 
   <% @comments.each do |comment| %>
     <p class="comment_user"><%= comment.username %> said...</p>
     <p class="comment_text"> <%= comment['content'] %></p>
   <% end %>
 
-<% end %>
+
 
 
 <%# l1 = Like.where(user_id: 1).where(song_id: 20) %>
