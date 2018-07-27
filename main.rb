@@ -1,4 +1,3 @@
-require 'sinatra/reloader'
 require 'sinatra'
 require 'pg'    
 require 'httparty'
@@ -171,6 +170,7 @@ post '/session' do
     session[:user_id] = @user.id
     redirect '/'
   else
+    @user_not_found = true
     erb :login
   end
 end

@@ -40,8 +40,14 @@
   </form>
 
   <form action="/songs/<%= @song['id']%>" method="post">
-      <input type="hidden" name="_method" value="delete">
-    <button class="post_Btn">Delete</button>
-
-
+    <input type="hidden" name="_method" value="delete">
+    <div class="delete_container">
+      <button class="delete_Btn tooltip">
+        Delete
+        <span class="fineprint tooltiptext">If you delete this, it will delete for all users.
+        <br>
+        Unlike a song to remove it from your playlist.</span>
+      </button> 
+    </div>
+  </form>
 </div>

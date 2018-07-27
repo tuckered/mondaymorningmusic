@@ -13,8 +13,8 @@
     <h1>Login</h1>
 </header>
 
-<% if @user && !@user.valid? %>
-  <p>Are you sure that's right? Try again...</p>
+<% if @user_not_found %>
+  <p class="error_prompts">Are you sure that's right? Try again...</p>
 <% end %>
 
 <div class="container">

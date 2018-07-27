@@ -27,7 +27,7 @@
 
 
 <% if @user && !@user.valid? %>
-  <p>That username is already taken. Please try another.</p>
+  <p class="error_prompts">That username is already taken. Please try another.</p>
 <% end %>
 
 <div class="container">

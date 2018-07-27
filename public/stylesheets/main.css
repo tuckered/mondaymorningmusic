@@ -63,6 +63,12 @@ h1 {
   flex-direction: column;
 }
 
+.error_prompts {
+  font-size: 1.5em;
+  
+}
+
+
 .logout_Btn {
   font-family: 'Text Me One', sans-serif;
   font-size: 0.7em;
@@ -271,10 +277,11 @@ label {
 }
 
 .like_Btn {
-  font-size: 0.6em;
+  font-family: 'Text Me One', sans-serif;
+  font-size: 0.8em;
   border-radius: 5px;
   background-color: white;
-  transition: 0.4s;
+  
 }
 
 .like_Btn:hover {
@@ -334,3 +341,36 @@ label {
   padding-left: 10em;
 }
 
+.delete_Btn {
+  font-family: 'Text Me One', sans-serif;
+  font-size: 1.2em;
+  border-radius: 5px;
+  background-color: white;
+  transition: 0.2s;
+  border: none;
+  margin-top: 50px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-size: 0.9em;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
