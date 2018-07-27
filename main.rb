@@ -1,4 +1,4 @@
-  
+require 'sinatra/reloader'
 require 'sinatra'
 require 'pg'    
 require 'httparty'
@@ -45,7 +45,7 @@ helpers do
   end
 
   def album_title(artist, title)
-    @album_title = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=57ee3318536b23ee81d6b27e36997cde&artist=' + artist + '&track=' + title + '&format=json')['track']['album']['title']["#text"]
+    @album_title = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=57ee3318536b23ee81d6b27e36997cde&artist=' + artist + '&track=' + title + '&format=json')['track']['album']['title']
   end
 
 
@@ -83,14 +83,14 @@ post '/songs' do
   @song = Song.new
   @song.title = params[:title]
   @song.artist = params[:artist]
-  @song.song_url = params[:song_url]
-
+  
   track_check(params[:artist], params[:title].gsub(' ', '+'))
   if @track_check['message'] == "Track not found"
     redirect 'songs/new'
   end
   
-  @album_title = album_title(params[:artist], params[:title].gsub(' ', '+'))
+  @song.song_url = params[:song_url]
+  @song.album = album_title(params[:artist], params[:title].gsub(' ', '+'))
   @song.artwork_url = artwork(params[:artist], params[:title].gsub(' ', '+'))
 
   # if @song.artwork_url['track']['album']['image'][3]["#text"] == ("")
@@ -120,7 +120,6 @@ put '/songs/:id' do
   @song.artist = params[:artist]
   @song.album = params[:album]
   @song.song_url = params[:song_url]
-  
   @song.artwork_url = artwork(params[:artist], params[:title])
   @song.save
   redirect "/songs/#{ params[:id] }"
@@ -129,7 +128,6 @@ end
 
 post '/comments' do
   redirect '/login' unless logged_in?
-
   comment = Comment.new
   comment.content = params[:content]
   comment.song_id = params[:song_id]

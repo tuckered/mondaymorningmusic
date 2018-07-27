@@ -21,20 +21,20 @@
 
 <div class="container">
 
-  <form class="add_song_form" action="/songs/<%= @song['id']%> " method="post">
+  <form class="input_form" action="/songs/<%= @song['id']%> " method="post">
     <input type="hidden" name="_method" value="put">
 
     <label for="">Title</label>
     <br>
-    <input class="add_song_box" type="text" name="title" value="<%= @song['title']%>">
+    <input class="input_box" type="text" name="title" value="<%= @song['title']%>">
     <br>
     <label for="">Artist</label>
     <br>
-    <input class="add_song_box" type="text" name="artist" value="<%= @song['artist']%>">
+    <input class="input_box" type="text" name="artist" value="<%= @song['artist']%>">
     <br>
     <label for="">Song Link</label>
     <br>
-    <input class="add_song_box" type="text" name="song_url" value="<%= @song['song_url']%>">
+    <input class="input_box" type="text" name="song_url" value="<%= @song['song_url']%>">
     <br>
     <button class="post_Btn">Edit</button>
   </form>

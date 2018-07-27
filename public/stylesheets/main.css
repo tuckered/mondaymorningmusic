@@ -29,9 +29,6 @@ header {
 h1 {
   display: flex;
   font-family: 'Text Me One', sans-serif;
-  /* font-family: 'Neucha', cursive; */
-  /* font-family: 'Londrina Outline', sans-serif; */
-  /* font-family: 'Open Sans', sans-serif; */
   color: black;
   font-size: 4em;
   padding-left: 30px;
@@ -142,24 +139,24 @@ a:hover {
 }
 
 
-.add_song_form {
+.song_form {
   /* border: 2px solid black; */
   width: auto;
-  font-size: 2em;
+  font-size: 1.6em;
   text-align: center;
   padding-top: 1.5em;
 }
 
-.add_song_box {
+.song_box {
   font-family: 'Text Me One', sans-serif;
   width: 50vw;;
   height:4vh;
-  font-size: 0.6em;
+  font-size: 1.4em;
   border-radius: 5px;
   transition: 0.5s;
 }
 
-.add_song_box:focus {
+.song_box:focus {
   outline: none;
   border-color: #B4EDF7;
   box-shadow: 0 0 10px #9ecaed;
@@ -171,7 +168,6 @@ a:hover {
   width: auto;
   text-align: center;
   padding-bottom: 2em;
-  /* border: 1px solid black; */
 }
 
 .post_Btn {
@@ -192,8 +188,8 @@ input {
   width : 150px;
   margin: 0;
   -webkit-box-sizing: border-box; 
-      -moz-box-sizing: border-box; 
-        box-sizing: border-box;
+  -moz-box-sizing: border-box; 
+  box-sizing: border-box;
   
 }
 
@@ -213,9 +209,6 @@ input {
 }
 
 iframe {
-  /* box-shadow: 0 0 2px 3px #B4EDF7; */
-  /* margin: 0 0 0 0; */
-  /* border: 5px solid black; */
   height: 60vh;
   width: 70vw;
 }
@@ -289,28 +282,24 @@ label {
   
 }
 
-.login_form {
-  padding-top: 1em;
+.input_form {
   width: auto;
-  font-size: 2em;
-  font-weight: bold;
+  font-size: 2.5em;
   text-align: center;
+  padding-top: 1.5em;
 
 }
 
-.login_box {
+.input_box {
   font-family: 'Text Me One', sans-serif;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  width: 70%;
+  width: 50vw;;
   height:4vh;
-  font-size: 1.4em;
-  text-align: center;
+  font-size: 0.8em;
   border-radius: 5px;
   transition: 0.5s;
 }
 
-.login_box:focus {
+.input_box:focus {
   outline: none;
   border-color: #B4EDF7;
   box-shadow: 0 0 10px #9ecaed;
@@ -318,7 +307,7 @@ label {
 
 .form_words {
   font-size: 1.6em;
-  margin-top: 10px;
+  margin-top: px;
   margin-bottom: 1em;
   
 }
@@ -328,7 +317,8 @@ label {
 }
 
 .not_registered {
-  font-size: 2em;
+  margin-top: 3em;
+  font-size: 1.6em;
 }
 
 /* .playlist_container {
