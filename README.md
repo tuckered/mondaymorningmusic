@@ -5,10 +5,7 @@
 Life can be hard, and Mondays can be even harder. Morning Monday Music is a site to share those singular songs that help people face the week ahead. Songs are linked to YouTube and users can register, listen, comment on and like the songs they listen to. Each user's liked songs is kept on a playlist for them to keep track of and listen to later.
 
 ## Links
-[Click here to check out the Monday Morning Music](https://mondaymorningmusic.herokuapp.com/playlist)
-
-[Link to the project GitHub page](https://github.com/tuckered/mondaymorningmusic)
-
+[Click here to check out the Monday Morning Music](https://mondaymorningmusic.herokuapp.com)
 
 ## Approach Taken
 

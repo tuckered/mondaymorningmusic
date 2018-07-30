@@ -34,6 +34,11 @@ h1 {
   padding-left: 30px;
 }
 
+h3 {
+  font-size: 2em;
+  margin-bottom: 0;
+}
+
 .about {
   margin-top: 2em;
   margin-bottom: 2em;
@@ -65,7 +70,6 @@ h1 {
 
 .error_prompts {
   font-size: 1.5em;
-  
 }
 
 
